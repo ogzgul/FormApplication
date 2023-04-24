@@ -1,0 +1,91 @@
+﻿@model IEnumerable<FormApplication.Models.Member>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<script>
+    $(document).ready(function(){
+        CreateForm();
+        
+    });
+    
+    function CreateForm() {
+         $("#CreateForm").load("@Url.Action("Create","Members")/");
+    }
+</script>
+<div class="d-flex justify-content-between align-item-center mb-2">
+    <button onclick="CreateForm()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Yeni Form Oluştur
+    </button>
+    <form asp-controller="Members" asp-action="Index">
+        <input type="value" placeholder="Ara..." name="search" value="@ViewData["Search"]" />
+        <input type="submit" value="Search" />
+    </form>
+
+</div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @item.CreatedAt.ToShortDateString()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div id="CreateForm">
+</div>

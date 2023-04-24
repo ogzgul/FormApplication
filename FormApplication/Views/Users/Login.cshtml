@@ -1,0 +1,32 @@
+﻿@model FormApplication.Models.ApplicationUser
+@{
+   
+    ViewData["Title"] = "Login";
+}
+<h4 class="d-flex justify-content-center align-item-center mt-5" >Giriş Yap</h4>
+<hr />
+<div class="row">
+    <div class="col-12 d-flex justify-content-center align-self-center ">
+        <form method="post" asp-action="Login">
+            <input type="hidden" name="returnUrl" value="@ViewData["returnUrl"]" />
+            <div class="form-group mt-5">
+                <div class="text-danger"></div>
+                <label class="control-label">Kullanıcı Adı</label>
+                <input id="UserName" name="userName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Şifre</label>
+                <input id="Password" name="password" type="password" class="form-control" />
+            </div>
+            <div class="alert-danger">
+                @if (ViewData["LoginFlag"] != null)
+                {
+                    @ViewData["LoginFlag"]
+                }
+            </div>
+            <div class="form-group mt-2 d-flex justify-content-center align-item-center">
+                <input type="submit" class="btn btn-primary" value="Giriş Yap" />
+            </div>
+        </form>
+    </div>
+</div>
