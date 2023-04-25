@@ -1,10 +1,8 @@
 ﻿@model FormApplication.Models.Member
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Sil";
 }
-
-<h1>Sil</h1>
 
 <h3>Silmek İstediğine Emin misin?</h3>
 <div>
@@ -51,7 +49,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <input type="submit" value="Sil" class="btn btn-danger" /> |
         <a asp-action="Index">Geri Dön</a>
     </form>
 </div>

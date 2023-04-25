@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using FormApplication.Models;
+using System.Threading;
+using Microsoft.Extensions.Options;
 
 namespace FormApplication.Data
 {
@@ -11,7 +13,8 @@ namespace FormApplication.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+
         }
-        
+
     }
 }
