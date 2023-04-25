@@ -18,11 +18,13 @@ namespace FormApplication.Models
         public string Surname { get; set; }
         [DisplayName("Yaş")]
         public int? Age { get; set; }
+        [DisplayName("İçerik")]
         public string Description { get; set; }
         [DisplayName("Oluşturma Tarihi")]
         [Required(ErrorMessage = "Bu alan zorunludur.")]
         [Column(TypeName = "date")]
         public DateTime CreatedAt { get; set; }
+        [DisplayName("Kullanıcı Id")]
         public Guid CreatedBy { get; set; }
     }
 }

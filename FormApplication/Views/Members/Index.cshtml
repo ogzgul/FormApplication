@@ -4,11 +4,6 @@
     ViewData["Title"] = "Index";
 }
 <script>
-    $(document).ready(function(){
-        CreateForm();
-        
-    });
-    
     function CreateForm() {
          $("#CreateForm").load("@Url.Action("Create","Members")/");
     }
@@ -19,7 +14,7 @@
     </button>
     <form asp-controller="Members" asp-action="Index">
         <input type="value" placeholder="Ara..." name="search" value="@ViewData["Search"]" />
-        <input type="submit" value="Search" />
+        <input type="submit" value="Ara" />
     </form>
 
 </div>
@@ -78,9 +73,9 @@
                 @Html.DisplayFor(modelItem => item.CreatedBy)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Düzenle</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detay</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Sil</a>
             </td>
         </tr>
 }

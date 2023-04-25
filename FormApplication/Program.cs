@@ -45,13 +45,19 @@ namespace FormApplication
             app.UseAuthentication();
             app.UseAuthorization();
 
-          
+            app.MapControllerRoute(
+               name: "Members",
+               pattern: "/forms/{id?}",
+               defaults: new { controller = "Members", action = "Details" });
+            app.MapRazorPages();
+
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Users}/{action=Login}/{id?}");
             app.MapRazorPages();
 
-            
+
+
 
             app.Run();
         }
