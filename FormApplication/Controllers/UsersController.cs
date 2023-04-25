@@ -43,7 +43,7 @@ namespace FormApplication.Controllers
         }
 
 
-
+     
         public IActionResult Login(string ReturnUrl = null, string error = null)
         {
             ViewData["returnUrl"] = ReturnUrl;
@@ -72,20 +72,35 @@ namespace FormApplication.Controllers
                 }
                 else
                 {
-                    string encodedUrl = HttpUtility.UrlEncode(returnUrl);
+                    
 
-                    Response.Redirect("/Users/Login?error=Kullan%c4%b1c%c4%b1+Ad%c4%b1+veya+Parola+Hatal%c4%b1&ReturnUrl=" + encodedUrl);
+                    Response.Redirect("/Users/Login?error="+ UrlEncode("Kullanıcı adı veya şifre hatalı"));
 
                     //Response.Redirect("/Login");
                 }
+
             }
-            Response.Redirect("/Members/Index");
+            else
+            {
+
+                Response.Redirect("/Users/Login?error=" + UrlEncode("Kullanıcı Adı ve Şifre Zorunludur"));
+            }
+            
         }
         [HttpGet]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
             return Redirect("/Users/Login");
+        }
+
+
+        private string UrlEncode(string text)
+        {
+            string encodedUrl = HttpUtility.UrlEncode(text);
+
+            return encodedUrl;
+
         }
     }
 }
